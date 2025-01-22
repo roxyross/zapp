@@ -1,7 +1,4 @@
-
-
 "use client";
-
 import React, { useEffect, useState } from "react";
 import ProductGrid from "@/components/ProductGrid";
 import ProductCard from "@/components/ProductCard";
