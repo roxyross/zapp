@@ -28,7 +28,7 @@ export interface Product {
   minimumOrderQuantity: number
   meta: Meta
   images: string[]
-  imageUrl:  string[]
+  thumbnail:  string | string[]
 }
 
 export interface Dimensions {

@@ -1,181 +1,3 @@
-// "use client";
-// import React from "react";
-// import { Product } from "@/src/types/product";
-// import { useCart } from "@/src/context/CartContext";
-// import { Button } from "@/components/ui/button"
-// import { CartItem } from "@/src/types/CartItem";
-
-
-// interface ProductDetailProps {
-//   product: Product;
-// }
-
-// const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
-//   const renderStars = (rating: number) => {
-//     const fullStars = Math.floor(rating);
-//     const halfStar = rating % 1 !== 0;
-//     const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
-
-//     return (
-//       <div className="flex items-center">
-//         {[...Array(fullStars)].map((_, index) => (
-//           <span key={index} className="text-yellow-500">&#9733;</span>
-//         ))}
-//         {halfStar && <span className="text-yellow-500">&#9734;</span>}
-//         {[...Array(emptyStars)].map((_, index) => (
-//           <span key={index} className="text-gray-400">&#9734;</span>
-//         ))}
-//       </div>
-//     );
-//   };
-
-//   return (
-//     <div>
-//       <h1>{product.title}</h1>
-//       <p>{product.description}</p>
-//       <p>{`Price: $${product.price}`}</p>
-//       <p>{`In Stock: ${product.stock > 0 ? "Yes" : "No"}`}</p>
-//       <p>{`Stock Quantity: ${product.stock}`}</p>
-
-//       <h3>Dimensions:</h3>
-//       <p>{`Width: ${product.dimensions.width} cm`}</p>
-//       <p>{`Height: ${product.dimensions.height} cm`}</p>
-//       <p>{`Depth: ${product.dimensions.depth} cm`}</p>
-
-//       <h3>Product Images:</h3>
-//       <div className="flex space-x-4">
-//         {product.images.map((image, index) => (
-//           <img
-//             key={index}
-//             src={image}
-//             alt={`Product Image ${index + 1}`}
-//             className="w-60 h-60 object-cover rounded-md"
-//           />
-//         ))}
-//       </div>
-//       <button
-//             onClick={() => handleAddToCart(product)} // Add to cart
-//             className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-//           >
-//             Add to Cart
-//           </button>
-
-//       <h3>Customer Reviews:</h3>
-//       <div>
-//         {product.reviews.length > 0 ? (
-//           product.reviews.map((review, index) => (
-//             <div key={index} className="mb-4 border-b pb-2">
-//               <h4 className="font-semibold">{review.reviewerName}</h4>
-//               {renderStars(review.rating)}
-//               <p className="text-sm text-gray-500">{review.comment}</p>
-//               <p className="text-xs text-gray-400">{`Reviewed on: ${review.date}`}</p>
-//             </div>
-//           ))
-//         ) : (
-//           <p className="text-gray-500">No reviews yet.</p>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProductDetail;
-
-
-// "use client"; 
-// import React from "react";
-// import { Product } from "@/src/types/product";
-// import { useCart } from "@/src/context/CartContext";
-// import { Button } from "@/components/ui/button";
-
-// interface ProductDetailProps {
-//   product: Product;
-// }
-
-// const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
-//   const { addToCart } = useCart(); // Use addToCart from CartContext
-
-//   const handleAddToCart = () => {
-//     const cartItem = {
-//       id: product.id,
-//       name: product.title,
-//       price: product.price,
-//       quantity: 1,
-//     };
-//     addToCart(cartItem);
-//   };
-
-//   const renderStars = (rating: number) => {
-//     const fullStars = Math.floor(rating);
-//     const halfStar = rating % 1 !== 0;
-//     const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
-
-//     return (
-//       <div className="flex items-center">
-//         {[...Array(fullStars)].map((_, index) => (
-//           <span key={index} className="text-yellow-500">&#9733;</span>
-//         ))}
-//         {halfStar && <span className="text-yellow-500">&#9734;</span>}
-//         {[...Array(emptyStars)].map((_, index) => (
-//           <span key={index} className="text-gray-400">&#9734;</span>
-//         ))}
-//       </div>
-//     );
-//   };
-
-//   return (
-//     <div>
-//       <h1>{product.title}</h1>
-//       <p>{product.description}</p>
-//       <p>{`Price: $${product.price}`}</p>
-//       <p>{`In Stock: ${product.stock > 0 ? "Yes" : "No"}`}</p>
-//       <p>{`Stock Quantity: ${product.stock}`}</p>
-//       <p>{`Category : ${product.category}`}</p>
-//       <p>{`brand : ${product.brand}`}</p>
-
-//       <h3>Dimensions:</h3>
-//       <p>{`Width: ${product.dimensions.width} cm`}</p>
-//       <p>{`Height: ${product.dimensions.height} cm`}</p>
-//       <p>{`Depth: ${product.dimensions.depth} cm`}</p>
-
-//       <h3>Product Images:</h3>
-//       <div className="flex space-x-4">
-//         {product.images.map((image, index) => (
-//           <img
-//             key={index}
-//             src={image}
-//             alt={`Product Image ${index + 1}`}
-//             className="w-60 h-60 object-cover rounded-md"
-//           />
-//         ))}
-//       </div>
-      
-//       {/* Add to Cart Button */}
-//       <Button onClick={handleAddToCart} className="mt-4 bg-blue-500 hover:bg-blue-600">
-//         Add to Cart
-//       </Button>
-
-//       <h3>Customer Reviews:</h3>
-//       <div>
-//         {product.reviews.length > 0 ? (
-//           product.reviews.map((review, index) => (
-//             <div key={index} className="mb-4 border-b pb-2">
-//               <h4 className="font-semibold">{review.reviewerName}</h4>
-//               {renderStars(review.rating)}
-//               <p className="text-sm text-gray-500">{review.comment}</p>
-//               <p className="text-xs text-gray-400">{`Reviewed on: ${review.date}`}</p>
-//             </div>
-//           ))
-//         ) : (
-//           <p className="text-gray-500">No reviews yet.</p>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProductDetail;
-
 "use client";
 import React from "react";
 import { Product } from "@/src/types/product";
@@ -229,8 +51,8 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
         {/* Product Images */}
         <div className="space-y-4">
           <h3 className="text-xl font-semibold text-gray-800">Product Images</h3>
-          <div className="flex space-x-4">
-            {product.imageUrl.map((image, index) => (
+          {/* <div className="flex space-x-4">
+            {product.thumbnail.map((image, index) => (
               <img
                 key={index}
                 src={image}
@@ -238,7 +60,30 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
                 className="w-60 h-60 object-cover rounded-lg border"
               />
             ))}
+          </div> */}
+          <div className="flex space-x-4">
+            {product.thumbnail ? (
+              Array.isArray(product.thumbnail) ? (
+                product.thumbnail.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`Product Thumbnail ${index + 1}`}
+                    className="w-60 h-60 object-cover rounded-lg border"
+                  />
+                ))
+              ) : (
+                <img
+                  src={product.thumbnail}
+                  alt="Product Thumbnail"
+                  className="w-60 h-60 object-cover rounded-lg border"
+                />
+              )
+            ) : (
+              <p className="text-gray-500">No thumbnails available.</p>
+            )}
           </div>
+
         </div>
 
         {/* Product Information */}
@@ -253,7 +98,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
             <span className="font-semibold">Stock Quantity:</span> {product.stock}
           </p>
           <p className="text-lg">
-            <span className="font-semibold">Category:</span> {product.tags}
+            <span className="font-semibold">Category:</span> {product.category}
           </p>
           <p className="text-lg">
             <span className="font-semibold">Sale:</span> {`${product.discountPercentage}%`}

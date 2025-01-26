@@ -98,7 +98,7 @@ type Product = {
   id: number;
   title: string;
   price: number;
-  imageUrl: string;
+  thumbnail: string;
 };
 
 const SearchPage = () => {
@@ -110,7 +110,7 @@ const SearchPage = () => {
     // Fetch all products from the API on component mount
     const fetchProducts = async () => {
       try {
-        const response = await fetch('https://template6-six.vercel.app/api/products');
+        const response = await fetch('https://dummyjson.com/products');
         const data = await response.json();
         setProducts(data.products || []); // Ensure products is always an array
         setFilteredProducts(data.products || []); // Ensure filteredProducts is always an array
@@ -159,7 +159,7 @@ const SearchPage = () => {
             >
               <Link href={`/products/${product.id}`}>
                 <img
-                  src={product.imageUrl}
+                  src={product.thumbnail}
                   alt={product.title}
                   className="w-full h-40 object-cover rounded-md mb-2"
                 />
